@@ -82,10 +82,6 @@ class Board(ttk.Frame):
             self.cells[(r,c)] = cell
             cell.grid(row=r, column=c, padx=2, pady=2, ipady=20)
 
-    def histogram(self, ids) -> dict[Mark, int]:
-        cells = map(lambda id: self.cells[id], ids)
-        return Counter(cell.mark for cell in cells)
-
     def winner(self) -> Mark:
         for r in range(self.rows):
             ids = zip(repeat(r), range(self.columns))
