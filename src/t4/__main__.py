@@ -118,6 +118,32 @@ class Board(ttk.Frame):
         if not sum(cell.mark == Mark.EMPTY for cell in cells):
             return Mark.EMPTY
 
+    def load(self, rows: list[str]) -> None:
+        for i, row in enumerate(rows):
+            for j, value in enumerate(list(row)):
+                match value:
+                    case "X":
+                        self.cells[(i,j)].mark = Mark.X
+                    case "O":
+                        self.cells[(i,j)].mark = Mark.O
+                    case " ":
+                        self.cells[(i,j)].mark = Mark.EMPTY
+
+    def export_row(self, r) -> str:
+        ids = zip(repeat(r), range(self.columns))
+        cells = [self.cells[id] for id in ids]
+        return "".join([ {
+            Mark.EMPTY: "⬚",
+            Mark.X: "X",
+            Mark.O: "O",
+        }[cell.mark] for cell in cells ])
+
+    def export_arr(self) -> list[str]:
+        return [ f"[{self.export_row(r)}]" for r in range(self.rows) ]
+
+    def export_str(self) -> str:
+        return "\n".join(self.export_arr())
+
     def reset(self):
         for cell in self.cells.values():
             cell.mark = Mark.EMPTY
