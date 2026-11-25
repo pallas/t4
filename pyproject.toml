@@ -9,7 +9,10 @@ authors = [
     { name = "Derrick Lyndon Pallas", email = "derrick@pallas.us" }
 ]
 requires-python = ">=3.15"
-dependencies = []
+dependencies = [
+    "loguru>=0.8.0",
+    "ttkbootstrap>=2.2.7",
+]
 
 [project.scripts]
 t4 = "t4.__main__:main"
