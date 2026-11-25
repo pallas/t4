@@ -1,2 +1,1 @@
-def main() -> None:
-    print("Hello from t4!")
+__all__ = ()
