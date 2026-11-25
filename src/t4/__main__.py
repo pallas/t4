@@ -90,7 +90,6 @@ class Board(ttk.Frame):
         for r in range(self.rows):
             ids = zip(repeat(r), range(self.columns))
             cells = [self.cells[id] for id in ids]
-            log.info(f"{len(cells)}")
             counts = Counter(cell.mark for cell in cells)
             for mark in (Mark.X, Mark.O):
                 if counts[mark] == len(cells):
@@ -99,7 +98,6 @@ class Board(ttk.Frame):
         for c in range(self.columns):
             ids = zip(range(self.rows), repeat(c))
             cells = [self.cells[id] for id in ids]
-            log.info(f"{len(cells)}")
             counts = Counter(cell.mark for cell in cells)
             for mark in (Mark.X, Mark.O):
                 if counts[mark] == len(cells):
@@ -115,7 +113,6 @@ class Board(ttk.Frame):
 
             ids = zip(range(self.rows), reversed(range(self.columns)))
             cells = [self.cells[id] for id in ids]
-            log.info(f"{len(cells)}")
             counts = Counter(cell.mark for cell in cells)
             for mark in (Mark.X, Mark.O):
                 if counts[mark] == len(cells):
